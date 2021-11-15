@@ -5,14 +5,16 @@ class Node
 {
 public:
     int val;
+    int location; 
     Node *next;
     Node()
     {
     }
-    Node(int val, Node *next)
+    Node(int val, Node *next, int location)
     {
         this->val = val;
         this->next = next;
+        this->location = location;
     }
 };
 
@@ -27,7 +29,7 @@ public:
         this->size = size - 1;
         for (int i = 0; i < size; i++)
         {
-            edges.push_back(new Node(i, nullptr));
+            edges.push_back(new Node(i, nullptr, i));
         }
     }
 
@@ -45,7 +47,8 @@ public:
             prev = node;
             node = node->next;
         }
-        prev->next = new Node(val, nullptr);
+        Node* temp = new Node(val, nullptr,B);
+        prev->next = temp;
     }
 
     void removeEdge(int A, int B, int val)
@@ -86,7 +89,7 @@ public:
             head = head->next;
             while (head)
             {
-                cout << head->val << "\t";
+                cout << head->location << "\t";
                 head = head->next;
             }
             cout << endl;
