@@ -162,20 +162,13 @@ int prims(AdjacencyList graph)
             }
         }
 
+        cout << "went from " << cur->location << " to " << minTo << " for " << min << endl;
         cur = graph.edges[minTo];
         visited[minTo] = true;
         edges.erase(edges.begin() + minTo);
         sum += min;
         addEdges(visited, cur, edges);
-
-        cout << "min and min to " << min << " : " << minTo << endl;
-
-        for (int i = 0; i < edges.size(); i++)
-        {
-            cout << edges[i].start << " : " << edges[i].end << " : " << edges[i].weight << endl;
-        }
         counter--;
-        getchar();
     }
 
     return sum;
